@@ -1,0 +1,65 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo{
+    width: 100px;
+}
+
+.navitems > ul {
+    display: flex;
+    list-style-type: none;
+}
+.navitems > ul > li{
+    padding: 20px;
+}
+
+.res-card{
+    width: 150px;
+    padding: 10px;
+    background-color: honeydew;
+}
+
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.search{
+    padding: 10px;
+}
+
+.reslogo{
+    width: 100%;
+}
+
+.res-container{
+    display: flex;
+}
+
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.shimmer-card{
+    margin: 20px;
+    width: 200px;
+    height: 400px;
+    background-color: honeydew;    
+}
+
+.shimmer-container{
+    display: flex;
+}
+
+.login{
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.filter{
+    display: flex;
+}
