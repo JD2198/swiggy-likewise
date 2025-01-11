@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import resLst from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -34,6 +35,7 @@ const fetchData= async () => {
     return listOfRestaurant.length === 0 ? (
     <Shimmer/>
     ) : 
+    
     (
         <div className="body">
             <div className="filter">
@@ -65,10 +67,15 @@ const fetchData= async () => {
                 
             </div>
             <div className="res-container">                
-                {/* <RestaurantCard resData={resLst[1]}/>
-                <RestaurantCard resLogo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpRJIu0-ICGAJtHkJFKT2_0eHVizJUW0yV6Q&s" resName="KFC" cuisine="Burger, fries" star="4.5" time="30 minutes"/>  */}
+               
                 {filteredRestaurant.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData = {restaurant}/>
+                    <Link 
+                        key={restaurant.info.id}
+                        to= {"/restaurants/" + restaurant.info.id}
+
+                    >
+                    <RestaurantCard  resData = {restaurant}/>
+                    </Link>
                 ))}
                 
             </div>

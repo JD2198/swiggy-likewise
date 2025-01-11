@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
 
@@ -14,15 +15,14 @@ const RestaurantMenu = () => {
     }, [])
 
     const fetchMenuData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=" + resId + "&submitAction=ENTER");
+        const data = await fetch(MENU_API + resId);
         const json = await data.json();
-        console.log(json);
 
         setResMenuInfo(json.data); // taking only data part from the whole api n putting in resMenuInfo
     }
     if (resMenuInfo === null) return <Shimmer/>;
     const {name, cuisines, avgRating, costForTwoMessage} = resMenuInfo?.cards[2]?.card?.card?.info;
-    const {itemCards} = resMenuInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const {itemCards} = resMenuInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
 
     // itemcards is your array so iterating 
     return (
