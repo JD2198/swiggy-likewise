@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Body = () => {
 
 const [listOfRestaurant, setlListOfRestaurant] = useState([]);
-const [filteredRestaurant, setFilteredRestaurant] = useState("");
+const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
 const [searchText, setSearchText] = useState("");
 
@@ -21,6 +21,8 @@ useEffect(()=>{
 }, []);
 
 const fetchData= async () => {
+
+    try{
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
 
     const json = await data.json();
@@ -28,11 +30,14 @@ const fetchData= async () => {
     console.log(json);
     setlListOfRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    } catch (error) {
+        console.error("Error fetching restaurant data:", error);
+    }
 
 };
 
 
-    return listOfRestaurant.length === 0 ? (
+    return listOfRestaurant?.length === 0 ? (
     <Shimmer/>
     ) : 
     
@@ -68,7 +73,7 @@ const fetchData= async () => {
             </div>
             <div className="res-container">                
                
-                {filteredRestaurant.map((restaurant) => (
+                {filteredRestaurant?.map((restaurant) => (
                     <Link 
                         key={restaurant.info.id}
                         to= {"/restaurants/" + restaurant.info.id}
