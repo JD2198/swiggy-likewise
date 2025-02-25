@@ -19,17 +19,18 @@ const Header = () => {
     }, [buttonName]);
 
     return (
-        <div className="header">
-            <div className="logo">
-                <img className="logo" src={LOGO_URL} ></img>
+        <div className="flex justify-between bg-amber-100">
+            <div className="">
+                <img className="w-18 rounded-4xl m-4 " src={LOGO_URL} ></img>
             </div>
-            <div className="navitems">
-                <ul>
-                   <li><Link to="/">Home</Link></li>
-                   <li><Link to="/about">About us</Link></li>
-                   <li><Link to="/contact">Contact us</Link></li>
-                   <li>Cart</li>
-                   <button className="login" onClick={() => {
+            <div className="flex items-center">
+                <ul className="flex">
+                    <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"> <Link to="/grocery">Grocery</Link></li>    
+                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/">Home</Link></li>
+                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/about">About us</Link></li>
+                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/contact">Contact us</Link></li>
+                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold">Cart</li>
+                   <button className="login font-bold" onClick={() => {
                     // btnName = "Logout";
                     buttonName === "Login" ? setButtonName("Logout") : setButtonName("Login");
                     

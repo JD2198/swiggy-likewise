@@ -28,8 +28,8 @@ const fetchData= async () => {
     const json = await data.json();
 
     console.log(json);
-    setlListOfRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setlListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     } catch (error) {
         console.error("Error fetching restaurant data:", error);
     }
@@ -43,35 +43,39 @@ const fetchData= async () => {
     
     (
         <div className="body">
-            <div className="filter">
-                <div className="search">
+            <div className="filter flex">
+                <div className="px-4 py-2">
                     <input 
-                    className="search-box" 
+                    className="search-box border border-solid border-black" 
                     type="text" 
                     value={searchText} 
                     onChange={
                         (e) => {
                         setSearchText(e.target.value);
                     }}/>
-                    <button onClick={() => {
+                    <button className="mx-2 my-2  px-4 py-2 bg-cyan-100"
+                     onClick={() => {
                         const filteredRestaurant = listOfRestaurant.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(filteredRestaurant);
                     }}>
                         Search</button>
                 </div>    
-                <button className="filter-btn" onClick={() => {
+                <div className="px-4 py-2 flex items-center">
+                <button className="filter-btn mx-2 my-2 px-4 py-2  bg-cyan-100" onClick={() => {
 
                     const filteredList = listOfRestaurant.filter(
-                        (res) => res.info.avgRating > 4.5
+                    (res) => res.info.avgRating > 4.5
                     );
                     setlListOfRestaurant(filteredList);
-                    
-                }}> Top rated restaurants
+
+                    }}> Top rated restaurants
 
                 </button>
+                </div>
+
                 
             </div>
-            <div className="res-container">                
+            <div className="flex flex-wrap">                
                
                 {filteredRestaurant?.map((restaurant) => (
                     <Link 
