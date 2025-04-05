@@ -53,7 +53,7 @@ const fetchData= async () => {
                         (e) => {
                         setSearchText(e.target.value);
                     }}/>
-                    <button className="mx-2 my-2  px-4 py-2 bg-cyan-100"
+                    <button className="mx-2 my-2  px-4 py-2 bg-cyan-100 cursor-pointer"
                      onClick={() => {
                         const filteredRestaurant = listOfRestaurant.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(filteredRestaurant);
@@ -61,7 +61,7 @@ const fetchData= async () => {
                         Search</button>
                 </div>    
                 <div className="px-4 py-2 flex items-center">
-                <button className="filter-btn mx-2 my-2 px-4 py-2  bg-cyan-100" onClick={() => {
+                <button className="filter-btn mx-2 my-2 px-4 py-2  bg-cyan-100 cursor-pointer " onClick={() => {
 
                     const filteredList = listOfRestaurant.filter(
                     (res) => res.info.avgRating > 4.5
