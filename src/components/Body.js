@@ -53,7 +53,7 @@ const fetchData= async () => {
                         (e) => {
                         setSearchText(e.target.value);
                     }}/>
-                    <button className="mx-2 my-2  px-4 py-2 bg-cyan-100 cursor-pointer"
+                    <button className="mx-2 my-2  px-4 py-2 bg-cyan-100 cursor-pointer  "
                      onClick={() => {
                         const filteredRestaurant = listOfRestaurant.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(filteredRestaurant);

@@ -20,4 +20,16 @@ const RestaurantCard = (props) => {
     )
 }
 
+// higher order func
+export const withOfferLabel = (RestaurantCard) => {
+    return ({}) => {
+        return (
+            <div>
+                <label>10% off</label>
+                <RestaurantCard/>
+            </div>
+        );
+    };
+}; 
+
 export default RestaurantCard;
