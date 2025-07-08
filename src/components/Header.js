@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -19,9 +19,9 @@ const Header = () => {
         console.log("useEffect called");
     }, [buttonName]);
 
-    // Subscribing to a store using a Selector
+    // Subscribing to a store using a useSelector react hook, 
 
-    const cartItems = useSelector((store) => store.cart.items);
+    const cartItems = useSelector((store) => store.cart.items); 
 
 
     return (
@@ -35,7 +35,7 @@ const Header = () => {
                    <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/">Home</Link></li>
                    <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/about">About us</Link></li>
                    <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/contact">Contact us</Link></li>
-                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold">Cart ({cartItems.length} items)</li>
+                   <li className="m-2 px-4 border-b-amber-950 border-2 font-bold"><Link to="/cart" >Cart ({cartItems.length} items)</Link></li>
                    <button className="login font-bold" onClick={() => {
                     // btnName = "Logout";
                     buttonName === "Login" ? setButtonName("Logout") : setButtonName("Login");

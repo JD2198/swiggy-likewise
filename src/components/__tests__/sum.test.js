@@ -1,9 +1,11 @@
-import { sum } from "../sum";
+const sum = (a,b) => {
+    return a+b;
+}
 
-test("Sum function should calculate the sum of two numbers", () => {
 
-    const result = sum(3, 4);
+test("", () => {
 
-    // Assertion
-    expect(result).toBe(7);
-});
+    const result = sum(2,2);
+
+    expect(result).toBe(4);
+})

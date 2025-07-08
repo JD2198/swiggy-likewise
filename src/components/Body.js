@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Body = () => {
 
-const [listOfRestaurant, setlListOfRestaurant] = useState([]);
+const [listOfRestaurant, setListOfRestaurant] = useState([]);
 const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
 const [searchText, setSearchText] = useState("");
@@ -28,7 +28,7 @@ const fetchData= async () => {
     const json = await data.json();
 
     console.log(json);
-    setlListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     } catch (error) {
         console.error("Error fetching restaurant data:", error);
@@ -46,6 +46,7 @@ const fetchData= async () => {
             <div className="filter flex">
                 <div className="px-4 py-2">
                     <input 
+                    data-testid = "searchInput"
                     className="search-box border border-solid border-black" 
                     type="text" 
                     value={searchText} 
@@ -66,7 +67,7 @@ const fetchData= async () => {
                     const filteredList = listOfRestaurant.filter(
                     (res) => res.info.avgRating > 4.5
                     );
-                    setlListOfRestaurant(filteredList);
+                    setListOfRestaurant(filteredList);
 
                     }}> Top rated restaurants
 
@@ -83,7 +84,7 @@ const fetchData= async () => {
                         to= {"/restaurants/" + restaurant.info.id}
 
                     >
-                    <RestaurantCard  resData = {restaurant}/>
+                    <RestaurantCard  resData = {restaurant.info}/>
                     </Link>
                 ))}
                 

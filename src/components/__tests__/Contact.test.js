@@ -19,6 +19,14 @@ describe("Test cases for Contact us page",() => {
         //Assertion
         expect(button).toBeInTheDocument();
     });
+
+    test("Should load input placeholder", () => {
+        render(<Contact/>);
+
+        const inputPlaceholder = screen.getByPlaceholderText("Name");
+
+        expect(inputPlaceholder).toBeInTheDocument();
+    });
     
     test("Should load 2 input boxes on the Contact component", () => {
     
